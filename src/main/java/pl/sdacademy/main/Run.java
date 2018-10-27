@@ -1,6 +1,14 @@
 package pl.sdacademy.main;
 
+import pl.sdacademy.database.jdbc.utils.JdbcUtils;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Run {
     private Long id;
@@ -9,6 +17,15 @@ public class Run {
     private Date startDate;
     private Date startTime;
     private Integer membersLimit;
+    private List<Member> membersList = new ArrayList();
+
+    public void setMembersList(List<Member> membersList) {
+        this.membersList = membersList;
+    }
+
+    public List<Member> getMembersList() {
+        return membersList;
+    }
 
     public Run() {
     }
@@ -22,6 +39,7 @@ public class Run {
                 ", startDate=" + startDate +
                 ", startTime=" + startTime +
                 ", membersLimit=" + membersLimit +
+                ", membersList=" + membersList +
                 '}';
     }
 

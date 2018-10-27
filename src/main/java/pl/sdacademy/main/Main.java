@@ -45,26 +45,26 @@ public class Main {
        RunDao rundao = DaoProvider.getInstance().getRundao();
         MemberDao memberDao = DaoProvider.getInstance().getMemberDao();
 
-        long memberid = 1;
-        for(int i= 10; i<40;  i++) {
-            Run run = new Run();
-            run.setId((long) i);
-            run.setName(UUID.randomUUID().toString());
-            run.setStartDate(new java.util.Date());
-            run.setStartTime(new java.util.Date());
-            run.setMembersLimit(100);
-            rundao.save(run);
-            for(int j=0;j<10;j++){
-                Member member = new Member();
-                member.setId(memberid++);
-                member.setName(UUID.randomUUID().toString());
-                member.setRunId(Math.toIntExact(run.getId()));
-                member.setStartNumber(j+69);
-
-                memberDao.save(member);
-
-            }
-        }
+//        long memberid = 1;
+//        for(int i= 10; i<40;  i++) {
+//            Run run = new Run();
+//            run.setId((long) i);
+//            run.setName(UUID.randomUUID().toString());
+//            run.setStartDate(new java.util.Date());
+//            run.setStartTime(new java.util.Date());
+//            run.setMembersLimit(100);
+//            rundao.save(run);
+//            for(int j=0;j<10;j++){
+//                Member member = new Member();
+//                member.setId(memberid++);
+//                member.setName(UUID.randomUUID().toString());
+//                member.setRunId(Math.toIntExact(run.getId()));
+//                member.setStartNumber(j+69);
+//
+//                memberDao.save(member);
+//
+//            }
+//        }
 
 
 

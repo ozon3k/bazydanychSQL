@@ -1,5 +1,6 @@
 package pl.sdacademy.jdbc;
 
+import pl.sdacademy.main.Member;
 import pl.sdacademy.main.Run;
 import pl.sdacademy.dao.RunDao;
 import pl.sdacademy.database.jdbc.utils.JdbcUtils;
@@ -9,6 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JdbcRunDaoImpl implements RunDao {
+    public JdbcRunDaoImpl() throws SQLException {
+    }
+
     public void save(Run run) throws SQLException {
         Connection connection = JdbcUtils.getInstance().getConnection();
 
@@ -69,6 +73,28 @@ if (result.next()) {
             lista.add(run);
         }
         return lista;
+    }
+
+    private List<Member> getMembersList (Long runId) throws SQLException{
+
+
+        Connection connection = JdbcUtils.getInstance().getConnection();
+        PreparedStatement statement = connection
+                .prepareStatement("select * from members");
+
+        ResultSet result = statement.executeQuery();
+
+        List<Member> lista = new ArrayList<Member>();
+        while(result.next()){
+            Member member = new Member();
+            member.setId(result.getLong("id"));
+            member.setName(result.getString("name"));
+            member.setLastName(result.getString("last_name"));
+            member.setStartNumber((int) result.getLong("start_number"));
+            member.setRunId((int) result.getLong("run_id"));
+            lista.add(member);
+    }
+    return lista;
     }
 
     public void update(Run run) throws SQLException {
