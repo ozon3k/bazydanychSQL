@@ -1,4 +1,4 @@
-package pl.sdacademy;
+package pl.sdacademy.main;
 
 import java.util.Date;
 
